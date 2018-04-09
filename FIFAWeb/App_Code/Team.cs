@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Web;
 
@@ -10,11 +11,28 @@ public class Team
 {
     private int id;
     public String name { get; set; }
-    public Team()
+    public Team(int id, String name)
     {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+        this.id = id;
+        this.name = name;
+    }
+
+    public static Team getTeamById(int teamId, OdbcConnection con, Boolean closeCon)
+    {
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM equipo WHERE id = {0};", teamId), con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        Team team = null;
+        while (reader.Read())
+        {
+            team = new Team(reader.GetInt32(0), reader.GetString(1));
+        }
+
+        if (closeCon)
+        {
+            con.Close();
+        }
+
+        return team;
     }
 
     public override string ToString()

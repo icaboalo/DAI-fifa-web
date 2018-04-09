@@ -35,7 +35,7 @@
             <div style="width: 70%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
                 <p style="display:inline-block;">Filtrar: </p>
                 <asp:DropDownList ID="spFilter" runat="server"></asp:DropDownList>
-                <p style="display:inline-block;">Texto: </p><asp:TextBox ID="tbFilter" runat="server"></asp:TextBox>
+                <p style="display:inline-block;">Texto: </p><asp:TextBox ID="tbFilter" runat="server" AutoPostBack="True"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Buscar" OnClick="Button1_Click" />
                 <br />
                 <br />
