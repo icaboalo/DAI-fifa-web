@@ -20,6 +20,30 @@
             width: 100%;
         }
         #container {height: 100%; width:100%; font-size:0;}
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: green;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -30,7 +54,19 @@
     <form id="form1" runat="server">
         <nav style="height:50px; background-color:green;">
             <p style="color:white;">Russia 2018</p>
+            <ul style="height:50px;">
+              <li><a class="active" href="#inicio">Inicio</a></li>
+              <li><a href="Index.aspx">Índice</a></li>
+              <li><a href="Players.aspx">Jugadores</a></li>
+              <li><a href="Games.aspx">Partidos</a></li>
+              <li><a href="Stadiums.aspx">Estadios</a></li>
+            </ul>
         </nav>
+       
+        <br />
+        <br />
+        <br />
+
         <div id="container">
             <div style="width: 70%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
                 <p style="display:inline-block;">Filtrar: </p>
