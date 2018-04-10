@@ -10,6 +10,7 @@ public partial class Index : System.Web.UI.Page
 {
     protected double lat = 0.0;
     protected double lng = 0.0;
+    protected double zoom = 7;
     protected OdbcConnection addConnection()
     {
         try
@@ -37,5 +38,8 @@ public partial class Index : System.Web.UI.Page
         lbMatch.Text = match.ToString();
         lbDate.Text = match.date.ToString();
         lbAddress.Text = match.stadium.address;
+        lat = match.stadium.lat;
+        lng = match.stadium.lng;
+        zoom = 11;
     }
 }
