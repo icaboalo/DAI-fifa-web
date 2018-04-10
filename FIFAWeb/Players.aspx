@@ -37,17 +37,26 @@
         <nav style="height:50px; background-color:green;">
             <p style="color:white;">Russia 2018</p>
             <ul style="height:50px;">
-              <li><a class="active" href="#inicio">Inicio</a></li>
-              <li><a href="Index.aspx">Índice</a></li>
+              <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
               <li><a href="Games.aspx">Partidos</a></li>
               <li><a href="Stadiums.aspx">Estadios</a></li>
             </ul>
-            <br />
-            <br />
-            <br />
+           
         </nav>
+         <br />
+            <br />
+            <br />
         <div>
+
+            Jugador:&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="ddPlayer" runat="server">
+            </asp:DropDownList>
+            <br />
+            <br />
+            <asp:GridView ID="gvPlayer" runat="server">
+            </asp:GridView>
+
         </div>
     </form>
 </body>
