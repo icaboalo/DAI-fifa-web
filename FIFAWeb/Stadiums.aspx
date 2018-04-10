@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style>
+        #icon{
+	        width:70px;
+	        height:70px;
+            padding:5px;
+	        opacity: 1;
+	        }
         #map {
             height: 180px;
             background-color: lightgrey;
@@ -20,7 +26,19 @@
             width: 100%;
         }
         #container {height: 100%; width:100%; font-size:0;}
+        #spStadium {
+             position: relative; 
+                width: 200px;
+                padding: 10px;
+                margin: 0 auto;
 
+                background: #9bc7de;
+                color: #fff;
+                outline: none;
+                cursor: pointer;
+
+                font-weight: bold;
+         }
         ul {
             list-style-type: none;
             margin: 0;
@@ -51,8 +69,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:50px; background-color:green;">
-            <p style="color:white;">Russia 2018</p>
+        <nav style="height:80px; background-color:green;">
+            <p style="color:white; font-size: 46px">Russia 2018
+                <img src="Rusia.jpg" id="icon" align="right" />
+            </p>
             <ul style="height:50px;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
@@ -62,9 +82,10 @@
         </nav>
         <br />
             <br />
-            <br />
+        <br />
+        <br />
         <div id="container" style="padding:10px;">
-            <div style="width: 70%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
+            <div style="width: 50%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
                 <p style="display:inline-block;">Estadio: </p>
                 <asp:DropDownList ID="spStadium" runat="server"></asp:DropDownList>
                 <br />
@@ -73,7 +94,7 @@
                 <asp:TextBox ID="tbDir" runat="server"></asp:TextBox>
                 <br />
             </div>
-            <div style="width: 28%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px; padding-right:10px;">
+            <div style="width: 48%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px; padding-right:10px;">
                 
                 <div id="map" style="height:180px"></div>
             </div>

@@ -7,7 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style>
-         #container {height: 100%; width:100%; font-size:0;}
+         #icon{
+	        width:70px;
+	        height:70px;
+            padding:5px;
+	        opacity: 1;
+	        }
+         #container {height: 100%; width:100%;}
          
          ul {
             list-style-type: none;
@@ -32,12 +38,27 @@
         li a:hover {
             background-color: #111;
         }
+        #ddTeam {
+             position: relative; 
+                width: 200px;
+                padding: 10px;
+                margin: 0 auto;
+
+                background: #9bc7de;
+                color: #fff;
+                outline: none;
+                cursor: pointer;
+
+                font-weight: bold;
+         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:50px; background-color:green;">
-            <p style="color:white;">Russia 2018</p>
+        <nav style="height:80px; background-color:green;">
+            <p style="color:white; font-size: 46px;">Russia 2018
+                <img src="Rusia.jpg" id="icon" align="right" />
+            </p>
             <ul style="height:50px;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
@@ -48,7 +69,8 @@
         </nav>
         <br />
             <br />
-            <br />
+        <br />
+        <br />
         <div id="container" style="padding:10px;">
             Equipo:&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddTeam" runat="server">
