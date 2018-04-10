@@ -48,13 +48,11 @@
             <br />
             <br />
         <div>
-
-            Jugador:&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddPlayer" runat="server">
-            </asp:DropDownList>
+            
             <br />
             <br />
-            <asp:GridView ID="gvPlayer" runat="server">
+            <asp:GridView ID="gvPlayer" runat="server" AllowPaging="true" OnPageIndexChanging="gvPlayer_PageIndexChanging" PageSize="15">
+                <PagerSettings Mode="NextPreviousFirstLast" NextPageText="Siguiente" PreviousPageText="Anterior" />
             </asp:GridView>
 
         </div>

@@ -29,7 +29,7 @@ public class Match
     public static Match getNextMatch(OdbcConnection con)
     {
         Match match = null;
-        OdbcCommand cmd = new OdbcCommand("SELECT TOP 1 FROM partido ORDER BY fecha DESC;");
+        OdbcCommand cmd = new OdbcCommand("SELECT TOP 1 * FROM partido ORDER BY fecha ASC;", con);
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {

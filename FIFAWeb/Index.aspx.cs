@@ -14,57 +14,28 @@ public partial class Index : System.Web.UI.Page
     {
         try
         {
-            OdbcConnection con = new OdbcConnection("Driver={SQL Server Native Client 11.0};Server=CC102-28;Uid=sa;Pwd=sqladmin;Database=fifa;");
+            OdbcConnection con = new OdbcConnection("Driver={SQL Server Native Client 11.0};Server=localhost;Database=fifa;Trusted_Connection={Yes};");
             con.Open();
             return con;
         } catch (Exception e)
         {
+            lbAddress.Text = e.Message;
             return null;
         }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        spFilter.Items.Add("Partido");
-        spFilter.Items.Add("Partido");
-        spFilter.Items.Add("Equipo");
-
-        //gvData.DataSource = Match.getMatches(addConnection());
+        gvData.DataSource = Match.getMatches(addConnection());
         gvData.DataBind();
-        lat = 26.329490;
-        lng = -97.503571;
+        getNextMatch();
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    private void getNextMatch()
     {
-        String filter = spFilter.SelectedValue;
-        String filterText = tbFilter.Text;
-        /*switch (filter)
-        {
-            case "Partido":
-                List<Match> list = gvData.DataSource as List<Match>;
-                for (int i = list.Count - 1; i >= 0; i--)
-                {
-                    Match match = list[i];
-                    if (!match.local.ToString().Equals(tbFilter.Text) && !match.visit.ToString().Equals(tbFilter.Text))
-                    {
-                        list.RemoveAt(i);
-                    }
-                }
-                gvData.DataSource = list;
-                gvData.DataBind();
-                lbMatch.Text = (gvData.DataSource as List<Match>).Count + "";
-
-                break;
-            case "Jugador":
-                break;
-            case "Equipo":
-                break;
-        }*/
-    }
-
-    protected void gvData_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-       
+        Match match = Match.getNextMatch(addConnection());
+        lbMatch.Text = match.ToString();
+        lbDate.Text = match.date.ToString();
+        lbAddress.Text = match.stadium.address;
     }
 }

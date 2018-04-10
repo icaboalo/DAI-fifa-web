@@ -68,13 +68,7 @@
 
         <div id="container" style="padding:10px;">
             <div style="width: 70%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
-                <p style="display:inline-block;">Filtrar: </p>
-                <asp:DropDownList ID="spFilter" runat="server"></asp:DropDownList>
-                <p style="display:inline-block;">Texto: </p><asp:TextBox ID="tbFilter" runat="server" AutoPostBack="True"></asp:TextBox>
-                <asp:Button ID="Button1" runat="server" Text="Buscar" OnClick="Button1_Click" />
-                <br />
-                <br />
-                <asp:GridView ID="gvData" runat="server" OnRowDataBound="gvData_RowDataBound"></asp:GridView>
+                <asp:GridView ID="gvData" runat="server"></asp:GridView>
             </div>
             <div style="width: 28%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px; padding-right:10px;">
                 <p>Proximo Partido:</p>
