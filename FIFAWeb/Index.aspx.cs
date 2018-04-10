@@ -29,9 +29,8 @@ public partial class Index : System.Web.UI.Page
         spFilter.Items.Add("Partido");
         spFilter.Items.Add("Equipo");
 
-        gvData.DataSource = Match.getMatches(addConnection());
+        //gvData.DataSource = Match.getMatches(addConnection());
         gvData.DataBind();
-        lbMatch.Text = (gvData.DataSource as List<Match>).Count + "";
         lat = 26.329490;
         lng = -97.503571;
     }
@@ -40,7 +39,7 @@ public partial class Index : System.Web.UI.Page
     {
         String filter = spFilter.SelectedValue;
         String filterText = tbFilter.Text;
-        switch (filter)
+        /*switch (filter)
         {
             case "Partido":
                 List<Match> list = gvData.DataSource as List<Match>;
@@ -61,7 +60,7 @@ public partial class Index : System.Web.UI.Page
                 break;
             case "Equipo":
                 break;
-        }
+        }*/
     }
 
     protected void gvData_RowDataBound(object sender, GridViewRowEventArgs e)

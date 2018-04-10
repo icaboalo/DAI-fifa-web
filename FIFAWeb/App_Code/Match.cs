@@ -17,12 +17,13 @@ public class Match
     public Team visit { get; set; }
     public Stadium stadium { get; set; }
 
-    public Match(int id, DateTime date, int localId, int visitId)
+    public Match(int id, DateTime date, int localId, int visitId, int stadiumId)
     {
         this.id = id;
         this.date = date;
         this.localId = localId;
         this.visitId = visitId;
+        this.stadiumId = stadiumId;
     }
 
     public static Match getNextMatch(OdbcConnection con)
@@ -32,7 +33,7 @@ public class Match
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            match = new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3));
+            match = new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4));
         }
         match.parseMatch(con);
         con.Close();
@@ -64,7 +65,7 @@ public class Match
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3)));
+            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4)));
         }
         reader.Close();
 
@@ -85,7 +86,7 @@ public class Match
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3)));
+            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4)));
         }
         reader.Close();
 

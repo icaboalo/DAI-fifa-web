@@ -30,12 +30,13 @@ public class Stadium
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            stadium = new Stadium(reader.GetInt32(0), reader.getString(1), reader.GetDouble(2), reader.GetDouble(3));
+            stadium = new Stadium(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetDouble(3));
         }
         return stadium;
     }
-    
-    override String toString() {
+
+    public override string ToString()
+    {
         return this.name;
     }
 }
