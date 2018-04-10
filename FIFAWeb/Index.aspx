@@ -55,8 +55,7 @@
         <nav style="height:50px; background-color:green;">
             <p style="color:white;">Russia 2018</p>
             <ul style="height:50px;">
-              <li><a class="active" href="#inicio">Inicio</a></li>
-              <li><a href="Index.aspx">Índice</a></li>
+              <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
               <li><a href="Games.aspx">Partidos</a></li>
               <li><a href="Stadiums.aspx">Estadios</a></li>
@@ -67,7 +66,7 @@
         <br />
         <br />
 
-        <div id="container">
+        <div id="container" style="padding:10px;">
             <div style="width: 70%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
                 <p style="display:inline-block;">Filtrar: </p>
                 <asp:DropDownList ID="spFilter" runat="server"></asp:DropDownList>
@@ -77,7 +76,7 @@
                 <br />
                 <asp:GridView ID="gvData" runat="server" OnRowDataBound="gvData_RowDataBound"></asp:GridView>
             </div>
-            <div style="width: 30%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
+            <div style="width: 28%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px; padding-right:10px;">
                 <p>Proximo Partido:</p>
                 <asp:Label ID="lbMatch" runat="server" Text="Alemania v.s México"></asp:Label>
                 <br />
