@@ -87,7 +87,7 @@
         <div id="container" style="padding:10px;">
             <div style="width: 50%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
                 <p style="display:inline-block;">Estadio: </p>
-                <asp:DropDownList ID="spStadium" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="spStadium" runat="server" OnSelectedIndexChanged="spStadium_SelectedIndexChanged"></asp:DropDownList>
                 <br />
                 <br />
                 Dirección:&nbsp;&nbsp;&nbsp;

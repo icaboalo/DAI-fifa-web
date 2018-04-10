@@ -24,6 +24,16 @@ public class Stadium
         this.lng = lng;
         this.address = address;
     }
+    public Stadium( double lat, double lng, String address)
+    {
+        this.lat = lat;
+        this.lng = lng;
+        this.address = address;
+    }
+    public Stadium(String name)
+    {
+        this.name = name;
+    }
 
     public static Stadium getStadiumById(int id, OdbcConnection con)
     {
@@ -33,6 +43,31 @@ public class Stadium
         while (reader.Read())
         {
             stadium = new Stadium(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4));
+        }
+        return stadium;
+    }
+
+    public static List<Stadium> getStadiums(OdbcConnection con)
+    {
+        List<Stadium> list = new List<Stadium>();
+        OdbcCommand cmd = new OdbcCommand("SELECT distinct nombre FROM estadio;", con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            list.Add(new Stadium(reader.GetString(0)));
+        }
+        reader.Close();
+        con.Close();
+        return list;
+    }
+    public static Stadium getInfo(OdbcConnection con, String nom)
+    {
+        Stadium stadium = null;
+        OdbcCommand cmd = new OdbcCommand("SELECT lat, lng, direccion FROM estadio where nombre= '"+nom+"';", con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            stadium = new Stadium (reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4));
         }
         return stadium;
     }

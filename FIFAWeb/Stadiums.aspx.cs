@@ -10,6 +10,7 @@ public partial class Stadiums : System.Web.UI.Page
 {
     public double lat = 0;
     public double lng = 0;
+    protected double zoom = 7;
 
     protected OdbcConnection addConnection()
     {
@@ -27,6 +28,28 @@ public partial class Stadiums : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            OdbcConnection con = addConnection();
+            if (con != null)
+            {               
+                    //spStadium.Items.Add(lector.GetString(0));
+                spStadium.DataSource = Stadium.getStadiums(con);
+                spStadium.DataBind();
+            }
+        }
+    }
 
+    protected void spStadium_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        OdbcConnection con = addConnection();
+        if (con != null)
+        {
+            Stadium stadium = Stadium.getInfo(con, spStadium.SelectedValue.ToString());
+            lat = stadium.lat;
+            lng = stadium.lng;
+            zoom = 11;
+            tbDir.Text = stadium.address;
+        }
     }
 }
