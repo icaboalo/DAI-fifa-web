@@ -7,7 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style>
-        ul {
+         #icon{
+	        width:70px;
+	        height:70px;
+            padding:5px;
+	        opacity: 1;
+	        }
+         #container {height: 100%; width:100%;}
+         
+         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -30,23 +38,53 @@
         li a:hover {
             background-color: #111;
         }
+        #ddTeam {
+             position: relative; 
+                width: 200px;
+                padding: 10px;
+                margin: 0 auto;
+
+                background: #9bc7de;
+                color: #fff;
+                outline: none;
+                cursor: pointer;
+
+                font-weight: bold;
+         }
+        #ddPlayer {
+             position: relative; 
+                width: 200px;
+                padding: 10px;
+                margin: 0 auto;
+
+                background: #9bc7de;
+                color: #fff;
+                outline: none;
+                cursor: pointer;
+
+                font-weight: bold;
+         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:50px; background-color:green;">
-            <p style="color:white;">Russia 2018</p>
+       <nav style="height:80px; background-color:green;">
+            <p style="color:white; font-size: 46px;">Russia 2018
+                <img src="Rusia.jpg" id="icon" align="right" />
+            </p>
             <ul style="height:50px;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
               <li><a href="Games.aspx">Partidos</a></li>
               <li><a href="Stadiums.aspx">Estadios</a></li>
             </ul>
-           
+            
         </nav>
          <br />
             <br />
-            <br />
+        <br />
+        <br />
+        <br />
         <div>
             
             <br />
