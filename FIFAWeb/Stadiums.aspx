@@ -44,7 +44,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: green;
+            font-size: 20px;
         }
 
         li {
@@ -60,7 +60,8 @@
         }
 
         li a:hover {
-            background-color: #111;
+            background-color: white;
+            color: dodgerblue;
         }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -69,16 +70,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:80px; background-color:green;">
-            <p style="color:white; font-size: 46px">Russia 2018
-                <img src="Rusia.jpg" id="icon" align="right" />
-            </p>
-            <ul style="height:50px;">
+        <nav style="height:80px; background-color:dodgerblue;">
+            <p style="color:white; font-size: 46px; display: inline-block; margin-top:0;">Russia 2018</p>
+            <ul style="height:50px; display: inline-block;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
               <li><a href="Games.aspx">Partidos</a></li>
               <li><a href="Stadiums.aspx">Estadios</a></li>
             </ul>
+            <img src="Rusia.jpg" id="icon" align="right" style="display:inline-block" />
         </nav>
         <br />
             <br />
@@ -86,12 +86,12 @@
         <br />
         <div id="container" style="padding:10px;">
             <div style="width: 50%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px;">
-                <p style="display:inline-block;">Estadio: </p>
-                <asp:DropDownList ID="spStadium" runat="server" OnSelectedIndexChanged="spStadium_SelectedIndexChanged"></asp:DropDownList>
+                <p style="display:inline-block;">Estadio: </p>&nbsp;
+                <asp:DropDownList ID="spStadium" runat="server" OnSelectedIndexChanged="spStadium_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                 <br />
                 <br />
-                Dirección:&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="tbDir" runat="server"></asp:TextBox>
+                Dirección:&nbsp;&nbsp;
+                <asp:Label ID="lbDir" runat="server"></asp:Label>
                 <br />
             </div>
             <div style="width: 48%; display: inline-block; zoom: 1; vertical-align: top; font-size: 18px; padding-right:10px;">

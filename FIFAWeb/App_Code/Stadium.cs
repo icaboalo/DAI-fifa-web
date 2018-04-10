@@ -50,11 +50,11 @@ public class Stadium
     public static List<Stadium> getStadiums(OdbcConnection con)
     {
         List<Stadium> list = new List<Stadium>();
-        OdbcCommand cmd = new OdbcCommand("SELECT distinct nombre FROM estadio;", con);
+        OdbcCommand cmd = new OdbcCommand("SELECT * FROM estadio;", con);
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            list.Add(new Stadium(reader.GetString(0)));
+            list.Add(new Stadium(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4)));
         }
         reader.Close();
         con.Close();
@@ -67,7 +67,7 @@ public class Stadium
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            stadium = new Stadium (reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4));
+            stadium = new Stadium (reader.GetDouble(0), reader.GetDouble(1), reader.GetString(2));
         }
         return stadium;
     }
