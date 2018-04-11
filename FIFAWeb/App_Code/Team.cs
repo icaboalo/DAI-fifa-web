@@ -9,7 +9,7 @@ using System.Web;
 /// </summary>
 public class Team
 {
-    private int id;
+    public int id;
     public String name { get; set; }
     public Team(int id, String name)
     {
@@ -20,6 +20,24 @@ public class Team
     public static Team getTeamById(int teamId, OdbcConnection con, Boolean closeCon)
     {
         OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM equipo WHERE id = {0};", teamId), con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        Team team = null;
+        while (reader.Read())
+        {
+            team = new Team(reader.GetInt32(0), reader.GetString(1));
+        }
+
+        if (closeCon)
+        {
+            con.Close();
+        }
+
+        return team;
+    }
+
+    public static Team getTeamByName(String name, OdbcConnection con, Boolean closeCon)
+    {
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM equipo WHERE nombre = {0};", name), con);
         OdbcDataReader reader = cmd.ExecuteReader();
         Team team = null;
         while (reader.Read())

@@ -73,7 +73,7 @@
         <br />
         <div id="container" style="padding:10px;">
             Equipo:&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddTeam" runat="server">
+            <asp:DropDownList ID="ddTeam" runat="server" OnSelectedIndexChanged="ddTeam_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
             <br />

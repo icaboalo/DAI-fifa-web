@@ -16,7 +16,7 @@ public partial class Stadiums : System.Web.UI.Page
     {
         try
         {
-            OdbcConnection con = new OdbcConnection("Driver={SQL Server Native Client 11.0};Server=CC102-28;Uid=sa;Pwd=sqladmin;Database=fifa;");
+            OdbcConnection con = new OdbcConnection("Driver={SQL Server Native Client 11.0};Server=localhost;Database=fifa;Trusted_Connection={Yes};");
             con.Open();
             return con;
         }
@@ -42,14 +42,11 @@ public partial class Stadiums : System.Web.UI.Page
 
     protected void spStadium_SelectedIndexChanged(object sender, EventArgs e)
     {
-        OdbcConnection con = addConnection();
-        if (con != null)
-        {
-            Stadium stadium = Stadium.getInfo(con, spStadium.SelectedValue.ToString());
-            lat = stadium.lat;
-            lng = stadium.lng;
-            zoom = 11;
-            tbDir.Text = stadium.address;
-        }
+
+        Stadium stadium = Stadium.getInfo(addConnection(), spStadium.SelectedValue); 
+        lat = stadium.lat;
+        lng = stadium.lng;
+        zoom = 11;
+        lbDir.Text = stadium.address;
     }
 }

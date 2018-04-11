@@ -16,6 +16,7 @@ public class Match
     public Team local { get; set; }
     public Team visit { get; set; }
     public Stadium stadium { get; set; }
+    public String scoreboard { get; set; }
 
     public Match(int id, DateTime date, int localId, int visitId, int stadiumId)
     {
@@ -73,7 +74,7 @@ public class Match
         {
             match.parseMatch(con);
         }
-
+        con.Close();
         return list;
     }
 
@@ -94,6 +95,7 @@ public class Match
         {
             match.parseMatch(con);
         }
+        con.Close();
 
         return list;
     }
@@ -105,7 +107,52 @@ public class Match
         this.visit = Team.getTeamById(this.visitId, con, false);
         this.visitTeam = this.visit.ToString();
         this.stadium = Stadium.getStadiumById(this.stadiumId, con);
+        this.scoreboard = Goal.getScoreboard(this.id, con);
         return this;
+    }
+
+    public static List<Match> getNextMatches(String teamName, OdbcConnection con)
+    {
+        List<Match> list = new List<Match>();
+        Team team = Team.getTeamByName(teamName, con, false);
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha >= '{0}' AND (local = {1} OR visit = {1})", DateTime.Now, team.id), con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4)));
+        }
+
+        reader.Close();
+
+        foreach (Match match in list)
+        {
+            match.parseMatch(con);
+        }
+        con.Close();
+        return list;
+    }
+
+    public static List<Match> getPreviousMatches(String teamName, OdbcConnection con)
+    {
+        List<Match> list = new List<Match>();
+        Team team = Team.getTeamByName(teamName, con, false);
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha < '{0}' AND (local = {1} OR visit = {1})", DateTime.Now, team.id), con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            list.Add(new Match(reader.GetInt32(0), reader.GetDate(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4)));
+        }
+
+        reader.Close();
+
+        foreach (Match match in list)
+        {
+            match.parseMatch(con);
+        }
+        con.Close();
+        return list;
     }
 
     public override string ToString()
