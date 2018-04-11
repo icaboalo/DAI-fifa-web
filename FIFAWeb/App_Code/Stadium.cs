@@ -63,11 +63,11 @@ public class Stadium
     public static Stadium getInfo(OdbcConnection con, String nom)
     {
         Stadium stadium = null;
-        OdbcCommand cmd = new OdbcCommand("SELECT lat, lng, direccion FROM estadio where nombre= '"+nom+"';", con);
+        OdbcCommand cmd = new OdbcCommand("SELECT * FROM estadio where nombre= '"+nom+"';", con);
         OdbcDataReader reader = cmd.ExecuteReader();
         while (reader.Read())
         {
-            stadium = new Stadium (reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4));
+            stadium = new Stadium(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetDouble(3), reader.GetString(4));
         }
         return stadium;
     }
