@@ -69,7 +69,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:80px; background-color:dodgerblue; padding-left:20px; padding-right:20px;">
+       <nav style="height:80px; background-color:dodgerblue; padding-left:20px; padding-right:20px;">
             <p style="color:white; font-size: 46px; display: inline-block; margin-top:0; margin-bottom:0;">Russia 2018</p>
             <ul style="height:50px; display: inline-block;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>

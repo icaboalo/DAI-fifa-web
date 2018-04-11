@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style>
+         #icon{
+	        width:70px;
+	        height:70px;
+            padding:5px;
+	        opacity: 1;
+	        }
         #map {
             height: 180px;
             background-color: lightgrey;
@@ -20,13 +26,24 @@
             width: 100%;
         }
         #container {height: 100%; width:100%; font-size:0;}
+        #spStadium {
+             position: relative; 
+                width: 200px;
+                padding: 10px;
+                margin: 0 auto;
 
+                background: #9bc7de;
+                color: #fff;
+                outline: none;
+                cursor: pointer;
+
+                font-weight: bold;
+         }
         ul {
             list-style-type: none;
             margin: 0;
-            padding: 0;
             overflow: hidden;
-            background-color: green;
+            font-size: 20px;
         }
 
         li {
@@ -42,7 +59,8 @@
         }
 
         li a:hover {
-            background-color: #111;
+            background-color: white;
+            color: dodgerblue;
         }
         #spFilter {
              position: relative; 
@@ -57,12 +75,7 @@
 
                 font-weight: bold;
          }
-        #icon{
-	        width:70px;
-	        height:70px;
-            padding:5px;
-	        opacity: 1;
-	        }
+	    
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -71,16 +84,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav style="height:80px; background-color:green;">
-            <p style="color:white; font-size: 46px;">Russia 2018              
-                <img src="Rusia.jpg" id="icon" align="right" />
-            </p>
-            <ul style="height:50px;">
+        <nav style="height:80px; background-color:dodgerblue; padding-left:20px; padding-right:20px;">
+            <p style="color:white; font-size: 46px; display: inline-block; margin-top:0; margin-bottom:0;">Russia 2018</p>
+            <ul style="height:50px; display: inline-block;">
               <li><a class="active" href="Index.aspx">Inicio</a></li>
               <li><a href="Players.aspx">Jugadores</a></li>
               <li><a href="Games.aspx">Partidos</a></li>
               <li><a href="Stadiums.aspx">Estadios</a></li>
             </ul>
+            <img src="Rusia.jpg" id="icon" align="right" style="display:inline-block" />
         </nav>
        
         <br />

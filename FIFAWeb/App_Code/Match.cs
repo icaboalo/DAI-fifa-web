@@ -107,7 +107,7 @@ public class Match
         this.visit = Team.getTeamById(this.visitId, con, false);
         this.visitTeam = this.visit.ToString();
         this.stadium = Stadium.getStadiumById(this.stadiumId, con);
-        this.scoreboard = Goal.getScoreboard(this.id, con);
+        //this.scoreboard = Goal.getScoreboard(this.id, con);
         return this;
     }
 
