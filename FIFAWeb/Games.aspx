@@ -91,10 +91,7 @@
             <img src="Rusia.jpg" id="icon" align="right" style="display:inline-block" />
         </nav>
         <br />
-            <br />
-        <br />
-        <br />
-        <div id="container" style="padding:10px;">
+        <div id="container" style="padding:45px;">
             Equipo:&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddTeam" runat="server" OnSelectedIndexChanged="ddTeam_SelectedIndexChanged">
             </asp:DropDownList>

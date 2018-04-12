@@ -88,6 +88,7 @@
 
                 font-weight: bold;
          }
+        #gvPlayer{ padding-left:5%;}
     </style>
 </head>
 <body>
@@ -103,18 +104,16 @@
             </ul>
             <img src="Rusia.jpg" id="icon" align="right" style="display:inline-block" />
         </nav>
-         <br />
-            <br />
-        <br />
-        <br />
         <br />
         <div>
             
+            <h3 style="margin-left: 40px">Tabla de goleo por jugador</h3>
             <br />
-            <br />
-            <asp:GridView ID="gvPlayer" runat="server" AllowPaging="true" OnPageIndexChanging="gvPlayer_PageIndexChanging" PageSize="15">
+            <div style="padding-left:45px">
+                <asp:GridView ID="gvPlayer" runat="server" AllowPaging="true" OnPageIndexChanging="gvPlayer_PageIndexChanging" PageSize="15" >
                 <PagerSettings Mode="NextPreviousFirstLast" NextPageText="Siguiente" PreviousPageText="Anterior" />
-            </asp:GridView>
+                </asp:GridView>
+            </div>
 
         </div>
     </form>
