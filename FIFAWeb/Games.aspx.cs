@@ -23,7 +23,11 @@ public partial class Games : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            ddTeam.DataSource = Team.getTeams(addConnection());
+            ddTeam.DataBind();
+        }
     }
 
     protected void ddTeam_SelectedIndexChanged(object sender, EventArgs e)

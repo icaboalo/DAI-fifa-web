@@ -107,7 +107,7 @@ public class Match
         this.visit = Team.getTeamById(this.visitId, con, false);
         this.visitTeam = this.visit.ToString();
         this.stadium = Stadium.getStadiumById(this.stadiumId, con);
-        //this.scoreboard = Goal.getScoreboard(this.id, con);
+        this.scoreboard = Goal.getScoreboard(this.id, this.local.id, this.visit.id, con);
         return this;
     }
 
@@ -115,7 +115,7 @@ public class Match
     {
         List<Match> list = new List<Match>();
         Team team = Team.getTeamByName(teamName, con, false);
-        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha >= '{0}' AND (local = {1} OR visit = {1})", DateTime.Now, team.id), con);
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha >= GETDATE() AND (idLocal = {0} OR idVisitante = {0})", team.id), con);
         OdbcDataReader reader = cmd.ExecuteReader();
 
         while (reader.Read())
@@ -127,6 +127,7 @@ public class Match
 
         foreach (Match match in list)
         {
+            Console.Out.WriteLine(match.ToString());
             match.parseMatch(con);
         }
         con.Close();
@@ -137,7 +138,7 @@ public class Match
     {
         List<Match> list = new List<Match>();
         Team team = Team.getTeamByName(teamName, con, false);
-        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha < '{0}' AND (local = {1} OR visit = {1})", DateTime.Now, team.id), con);
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM partido WHERE fecha < GETDATE() AND (idLocal = {0} OR idVisitante = {0})", team.id), con);
         OdbcDataReader reader = cmd.ExecuteReader();
 
         while (reader.Read())
@@ -149,6 +150,7 @@ public class Match
 
         foreach (Match match in list)
         {
+            Console.Out.WriteLine(match.ToString());
             match.parseMatch(con);
         }
         con.Close();

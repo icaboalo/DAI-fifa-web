@@ -33,7 +33,6 @@ public partial class Stadiums : System.Web.UI.Page
             OdbcConnection con = addConnection();
             if (con != null)
             {               
-                spStadium.Items.Add(lector.GetString(0));
                 spStadium.DataSource = Stadium.getStadiums(con);
                 spStadium.DataBind();
             }

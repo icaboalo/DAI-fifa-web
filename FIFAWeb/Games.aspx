@@ -91,24 +91,21 @@
             <img src="Rusia.jpg" id="icon" align="right" style="display:inline-block" />
         </nav>
         <br />
-        <div id="container" style="padding:45px;">
+        <div style="padding:45px;">
             Equipo:&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddTeam" runat="server" OnSelectedIndexChanged="ddTeam_SelectedIndexChanged">
+            <asp:DropDownList ID="ddTeam" runat="server" OnSelectedIndexChanged="ddTeam_SelectedIndexChanged" AutoPostBack="True">
             </asp:DropDownList>
             <br />
             <br />
-            <div style="width: 40%; display: inline-block; zoom: 1; vertical-align: top;">
-            Partidos pasados:<br />
-            &nbsp;<asp:GridView ID="gvPast" runat="server">
+            <p>Partidos pasados:</p>
+            <asp:GridView ID="gvPast" runat="server">
             </asp:GridView>
 
-            </div>
             <br />
-            <div style="width: 40%; display: inline-block; zoom: 1; vertical-align: top;">
-            Partidos siguientes:<br />
-            &nbsp;<asp:GridView ID="gvNext" runat="server">
+            <br />
+            <p>Partidos siguientes:</p>
+            <asp:GridView ID="gvNext" runat="server">
             </asp:GridView>
-             </div>
         </div>
     </form>
 </body>

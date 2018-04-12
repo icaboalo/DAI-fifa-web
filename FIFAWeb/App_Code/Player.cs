@@ -65,6 +65,28 @@ public class Player
         return list;
     }
 
+    public static Player getPlayerById(int playerId, OdbcConnection con, Boolean closeCon)
+    {
+        Player player = null;
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM jugador WHERE id = {0}", playerId), con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            player = new Player(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4));
+        }
+
+        if (closeCon)
+        {
+            con.Close();
+        }
+        return player;
+    }
+
+    public int getTeamId()
+    {
+        return this.teamId;
+    }
+
     private void parsePlayer(OdbcConnection con)
     {
         this.team = Team.getTeamById(this.teamId, con, false);

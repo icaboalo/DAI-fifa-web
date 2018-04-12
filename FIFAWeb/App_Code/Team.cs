@@ -37,7 +37,7 @@ public class Team
 
     public static Team getTeamByName(String name, OdbcConnection con, Boolean closeCon)
     {
-        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM equipo WHERE nombre = {0};", name), con);
+        OdbcCommand cmd = new OdbcCommand(String.Format("SELECT * FROM equipo WHERE nombre = '{0}';", name), con);
         OdbcDataReader reader = cmd.ExecuteReader();
         Team team = null;
         while (reader.Read())
@@ -51,6 +51,18 @@ public class Team
         }
 
         return team;
+    }
+
+    public static List<Team> getTeams(OdbcConnection con)
+    {
+        List<Team> list = new List<Team>();
+        OdbcCommand cmd = new OdbcCommand("SELECT * FROM equipo", con);
+        OdbcDataReader reader = cmd.ExecuteReader();
+        while(reader.Read())
+        {
+            list.Add(new Team(reader.GetInt32(0), reader.GetString(1)));
+        }
+        return list;
     }
 
     public override string ToString()
